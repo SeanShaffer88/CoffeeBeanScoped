@@ -31,6 +31,9 @@ internal sealed class SingleInstanceManager : WindowsFormsApplicationBase
         e.BringToForeground = false;
     }
 
+    private const string Usage =
+        "CoffeeBean.exe [enable|disable|always|watch-running <app>|watch-foreground <app>]";
+
     private bool ParseAndApplyCommandLineArguments(IReadOnlyList<string> args)
     {
         switch (args)
@@ -44,11 +47,23 @@ internal sealed class SingleInstanceManager : WindowsFormsApplicationBase
             case ["disable"]:
                 notifyIcon.IsScreenLockEnabled = false;
                 return true;
+            case ["always"]:
+                notifyIcon.SetScope(ScopeMode.Always, Settings.ScopeProcessName);
+                notifyIcon.IsScreenLockEnabled = true;
+                return true;
+            case ["watch-running", var process]:
+                notifyIcon.SetScope(ScopeMode.WhenRunning, process);
+                notifyIcon.IsScreenLockEnabled = true;
+                return true;
+            case ["watch-foreground", var process]:
+                notifyIcon.SetScope(ScopeMode.WhenForeground, process);
+                notifyIcon.IsScreenLockEnabled = true;
+                return true;
             case [var argument]:
-                ErrorDialog.Show($"Unknown command line argument '{argument}'.\nUsage:\nCoffeeBean.exe [enable|disable]");
+                ErrorDialog.Show($"Unknown command line argument '{argument}'.\nUsage:\n{Usage}");
                 return false;
             default:
-                ErrorDialog.Show("Too many command line arguments are provided.\nUsage:\nCoffeeBean.exe [enable|disable]");
+                ErrorDialog.Show($"Too many command line arguments are provided.\nUsage:\n{Usage}");
                 return false;
         }
     }
