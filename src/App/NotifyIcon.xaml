@@ -4,7 +4,7 @@
                            xmlns:local="clr-namespace:CoffeeBean"
                            xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms">
   <local:NotifyIconComponent.TrayIcon>
-    <forms:NotifyIcon Text="CoffeeBean" Visible="true" MouseClick="TrayIcon_MouseClick">
+    <forms:NotifyIcon Text="CoffeeBeanScoped" Visible="true" MouseClick="TrayIcon_MouseClick">
       <forms:NotifyIcon.ContextMenuStrip>
         <forms:ContextMenuStrip x:Name="TrayMenu">
           <forms:ContextMenuStrip.Items>
