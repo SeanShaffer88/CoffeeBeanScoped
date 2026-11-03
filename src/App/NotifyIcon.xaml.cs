@@ -10,7 +10,7 @@ namespace CoffeeBean;
 
 public partial class NotifyIcon
 {
-    private static readonly string githubUrl = "https://github.com/PolarGoose/CoffeeBean";
+    private static readonly string githubUrl = "https://github.com/SeanShaffer88/CoffeeBeanScoped";
     private readonly Icon enabledIcon = LoadIcon("iconEnabled");
     private readonly Icon disabledIcon = LoadIcon("iconDisabled");
     private readonly DispatcherTimer scopeTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(2) };
@@ -115,25 +115,25 @@ public partial class NotifyIcon
         string text;
         if (!screenLockEnabled)
         {
-            text = "CoffeeBean — off";
+            text = "CoffeeBeanScoped — off";
         }
         else if (scopeMode == ScopeMode.Always)
         {
-            text = "CoffeeBean — keeping awake";
+            text = "CoffeeBeanScoped — keeping awake";
         }
         else if (string.IsNullOrWhiteSpace(scopeProcessName))
         {
-            text = "CoffeeBean — no app chosen";
+            text = "CoffeeBeanScoped — no app chosen";
         }
         else if (wakeHeld)
         {
-            text = $"CoffeeBean — awake while {scopeProcessName}";
+            text = $"CoffeeBeanScoped — awake while {scopeProcessName}";
         }
         else
         {
             text = scopeMode == ScopeMode.WhenForeground
-                ? $"CoffeeBean — waiting for {scopeProcessName} in front"
-                : $"CoffeeBean — waiting for {scopeProcessName}";
+                ? $"CoffeeBeanScoped — waiting for {scopeProcessName} in front"
+                : $"CoffeeBeanScoped — waiting for {scopeProcessName}";
         }
 
         return text.Length <= 63 ? text : text.Substring(0, 63);

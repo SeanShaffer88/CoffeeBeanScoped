@@ -1,6 +1,7 @@
-# CoffeeBean
+# CoffeeBeanScoped
 ![Screenshot](doc/Screenshot.png)<br>
 A utility to prevent a policy-enforced screen lock in Windows.<br>
+CoffeeBeanScoped is a fork of CoffeeBean, with scoped wake: it can keep the PC awake only while one chosen app is running or in the foreground.<br>
 Windows can be configured to lock the screen after some time of inactivity.<br>
 If corporate IT policies enforce this option, it is impossible to disable it via Windows settings.<br>
 This utility is a convenient and reliable way to solve this problem.
@@ -9,14 +10,7 @@ This utility is a convenient and reliable way to solve this problem.
 * Windows 7 or higher
 
 ## How to install
-
-### Option 1: Install via Winget
-```
-winget install -e --id PolarGoose.CoffeeBean
-```
-
-### Option 2: Use portable executable
-Download `CoffeeBean.zip` (portable executable) from the latest [release](https://github.com/PolarGoose/CoffeeBean/releases)
+Download `CoffeeBeanScoped.zip` (portable executable, no installer) from the latest [release](https://github.com/SeanShaffer88/CoffeeBeanScoped/releases), unzip it, and run `CoffeeBeanScoped.exe`. The executable is unsigned.
 
 ## How to use
 * Start the application, and you will get an icon in the system tray
@@ -37,20 +31,20 @@ Download `CoffeeBean.zip` (portable executable) from the latest [release](https:
 Command-line arguments control screen lock functionality. You can use them in the following way:
 * Launch the application with screen lock prevention functionality enabled or enable the screen lock prevention functionality of an already running instance of the application:
 ```
-CoffeeBean.exe enable
+CoffeeBeanScoped.exe enable
 ```
 * Launch the application with screen lock prevention functionality disabled or turn off screen lock functionality of an already running instance of the application:
 ```
-CoffeeBean.exe disable
+CoffeeBeanScoped.exe disable
 ```
 * Prevent sleep only while an app is running, or only while it is the front window (this also enables the tool and remembers the app and mode):
 ```
-CoffeeBean.exe watch-running notepad
-CoffeeBean.exe watch-foreground notepad
+CoffeeBeanScoped.exe watch-running notepad
+CoffeeBeanScoped.exe watch-foreground notepad
 ```
 * Go back to preventing sleep whenever the tool is enabled, with no app condition:
 ```
-CoffeeBean.exe always
+CoffeeBeanScoped.exe always
 ```
 
 ## How it works

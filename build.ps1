@@ -41,6 +41,6 @@ dotnet build --nologo `
              $root/CoffeeBean.slnx
 CheckReturnCodeOfPreviousCommand "build failed"
 
-Compress-Archive -LiteralPath "$buildDir/AnyCPU/Release/CoffeeBean/net472/CoffeeBean.exe" `
-                 -DestinationPath "$buildDir/CoffeeBean.zip" `
+Compress-Archive -LiteralPath "$buildDir/AnyCPU/Release/CoffeeBean/net472/CoffeeBeanScoped.exe" `
+                 -DestinationPath "$buildDir/CoffeeBeanScoped.zip" `
                  -Force

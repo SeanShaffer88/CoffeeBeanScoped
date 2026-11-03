@@ -32,7 +32,7 @@ internal sealed class SingleInstanceManager : WindowsFormsApplicationBase
     }
 
     private const string Usage =
-        "CoffeeBean.exe [enable|disable|always|watch-running <app>|watch-foreground <app>]";
+        "CoffeeBeanScoped.exe [enable|disable|always|watch-running <app>|watch-foreground <app>]";
 
     private bool ParseAndApplyCommandLineArguments(IReadOnlyList<string> args)
     {

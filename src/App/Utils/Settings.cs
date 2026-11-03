@@ -12,7 +12,32 @@ internal enum ScopeMode
 
 internal static class Settings
 {
-    private const string KeyPath = @"HKEY_CURRENT_USER\Software\CoffeeBean";
+    private const string KeyPath = @"HKEY_CURRENT_USER\Software\CoffeeBeanScoped";
+
+    static Settings()
+    {
+        // One-time copy of settings saved by versions before the rename to CoffeeBeanScoped.
+        try
+        {
+            using var legacyKey = Registry.CurrentUser.OpenSubKey(@"Software\CoffeeBean");
+            if (legacyKey == null)
+            {
+                return;
+            }
+            using var key = Registry.CurrentUser.CreateSubKey(@"Software\CoffeeBeanScoped");
+            foreach (var name in new[] { "RunEnabled", "ScopeMode", "ScopeProcessName" })
+            {
+                if (key.GetValue(name) == null && legacyKey.GetValue(name) is object value)
+                {
+                    key.SetValue(name, value);
+                }
+            }
+        }
+        catch (Exception)
+        {
+            // Migration is best-effort; defaults apply if it cannot run.
+        }
+    }
 
     public static bool RunEnabled
     {
@@ -39,7 +64,7 @@ internal static class Settings
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                using var key = Registry.CurrentUser.OpenSubKey(@"Software\CoffeeBean", true);
+                using var key = Registry.CurrentUser.OpenSubKey(@"Software\CoffeeBeanScoped", true);
                 key?.DeleteValue("ScopeProcessName", false);
             }
             else

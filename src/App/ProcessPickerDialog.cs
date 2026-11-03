@@ -208,7 +208,7 @@ internal sealed class ProcessPickerDialog : Form
             {
                 e.Cancel = true;
                 MessageBox.Show(this, "Pick an app from the list, type its process name, or browse for its .exe file.",
-                    "CoffeeBean", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    "CoffeeBeanScoped", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         base.OnFormClosing(e);
