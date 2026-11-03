@@ -9,6 +9,16 @@
         <forms:ContextMenuStrip x:Name="TrayMenu">
           <forms:ContextMenuStrip.Items>
             <forms:ToolStripMenuItem Text="Enabled" CheckOnClick="true" CheckedChanged="EnabledMenuItem_CheckedChanged" x:Name="EnabledMenuItem" ToolTipText="Shows if screen lock prevention is enabled or not"/>
+            <forms:ToolStripMenuItem Text="Keep awake only while" x:Name="ScopeMenuItem" ToolTipText="Limit sleep prevention to one chosen app">
+              <forms:ToolStripMenuItem.DropDownItems>
+                <forms:ToolStripMenuItem Text="Always (whenever Enabled is on)" Click="ScopeAlways_OnClick" x:Name="ScopeAlwaysMenuItem"/>
+                <forms:ToolStripMenuItem Text="Chosen app is running" Click="ScopeRunning_OnClick" x:Name="ScopeRunningMenuItem"/>
+                <forms:ToolStripMenuItem Text="Chosen app is in foreground" Click="ScopeForeground_OnClick" x:Name="ScopeForegroundMenuItem"/>
+                <forms:ToolStripSeparator/>
+                <forms:ToolStripMenuItem Text="Choose app…" Click="ScopeChooseApp_OnClick" x:Name="ScopeChooseAppMenuItem"/>
+                <forms:ToolStripMenuItem Text="App: none chosen" Enabled="false" x:Name="ScopeTargetMenuItem"/>
+              </forms:ToolStripMenuItem.DropDownItems>
+            </forms:ToolStripMenuItem>
             <forms:ToolStripMenuItem Text="Launch at startup" CheckOnClick="true" CheckedChanged="LaunchAtStartupMenuItem_CheckedChanged" x:Name="LaunchAtStartupMenuItem"/>
             <forms:ToolStripMenuItem Text="Launch in enabled state" CheckOnClick="true" CheckedChanged="LaunchEnabledMenuItem_CheckedChanged" x:Name="LaunchEnabledMenuItem" ToolTipText="Start the tool in an enabled state by default"/>
             <forms:ToolStripSeparator/>

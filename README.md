@@ -26,6 +26,13 @@ Download `CoffeeBean.zip` (portable executable) from the latest [release](https:
 * Use the `Launch at startup` context menu item if you want the application to run at Windows startup.
 * Left-click the tray icon or use the `Enabled` context menu item to turn the screen lock prevention functionality on or off.
 
+### Keep awake only while one app is running or in front
+* Open the `Keep awake only while` submenu in the tray icon context menu.
+* Use `Choose app…` to pick the app: select it from the list of running apps, type its process name (for example `notepad`), or browse for its `.exe` file.
+* Pick `Chosen app is running` to prevent sleep only while that app is running, or `Chosen app is in foreground` to prevent sleep only while that app is the front window.
+* Pick `Always (whenever Enabled is on)` to go back to preventing sleep whenever the tool is enabled, with no app condition.
+* The chosen app and mode are remembered between runs. The tray icon and its tooltip show whether the tool is currently keeping the PC awake or waiting for the chosen app. As soon as the app closes or stops being the front window, normal sleep and screen lock behavior returns.
+
 ### Running the application from console
 Command-line arguments control screen lock functionality. You can use them in the following way:
 * Launch the application with screen lock prevention functionality enabled or enable the screen lock prevention functionality of an already running instance of the application:
@@ -35,6 +42,15 @@ CoffeeBean.exe enable
 * Launch the application with screen lock prevention functionality disabled or turn off screen lock functionality of an already running instance of the application:
 ```
 CoffeeBean.exe disable
+```
+* Prevent sleep only while an app is running, or only while it is the front window (this also enables the tool and remembers the app and mode):
+```
+CoffeeBean.exe watch-running notepad
+CoffeeBean.exe watch-foreground notepad
+```
+* Go back to preventing sleep whenever the tool is enabled, with no app condition:
+```
+CoffeeBean.exe always
 ```
 
 ## How it works
