@@ -1,5 +1,6 @@
 on: push
 
+
 jobs:
   build:
     runs-on: windows-latest
@@ -10,8 +11,8 @@ jobs:
         if: github.ref_type == 'tag'
         with:
           draft: true
-          files: build/CoffeeBean.zip
+          files: build/CoffeeBeanScoped.zip
       - uses: actions/upload-artifact@v7
         with:
           name: Build artifacts
-          path: build/CoffeeBean.zip
+          path: build/CoffeeBeanScoped.zip
