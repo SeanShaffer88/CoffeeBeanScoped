@@ -50,7 +50,7 @@ public partial class NotifyIcon
         SystemEvents.SessionSwitch += OnSessionSwitchEvent;
     }
 
-    public void SetScope(ScopeMode mode, string processName)
+    internal void SetScope(ScopeMode mode, string processName)
     {
         scopeMode = mode;
         scopeProcessName = TargetProcess.NormalizeName(processName);
